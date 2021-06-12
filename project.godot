@@ -10,6 +10,7 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
+
 }
 
 [application]
@@ -20,6 +21,7 @@ config/name="GMTK Jam"
 
 GameManager="*res://Scripts/GameManager.gd"
 Pause="*res://Pause/Pause.tscn"
+Upgrades="*res://Scripts/Upgrades.gd"
 
 [input]
 

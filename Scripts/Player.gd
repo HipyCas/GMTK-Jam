@@ -4,8 +4,6 @@ export var speed = 100
 export var flip = false # By default sprite looks to the left
 var collected = {}
 
-onready var upgrades = get_node("../Upgrades")
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -30,13 +28,13 @@ func _physics_process(delta):
 	
 func _input(event):
 	if Input.is_key_pressed(KEY_H):
-		var res = upgrades.upgrade('hook', collected)
+		var res = Upgrades.upgrade('hook', collected)
 		collected = res[0]
 		if res[1] == '': print('UPGRADED: hook (left ', collected, ')')
 		else: push_warning('Can\'t upgrade, not enough components')
 		print(res[1])
 	elif Input.is_key_pressed(KEY_R):
-		var res = upgrades.upgrade('ramp', collected)
+		var res = Upgrades.upgrade('ramp', collected)
 		collected = res[0]
 		if res[1] == '': print('UPGRADED: ramp (left ', collected, ')')
 		else: push_warning('Can\'t upgrade ramp, not enough components')
@@ -51,4 +49,4 @@ func _on_Area2D_area_entered(area):
 	collected[area.get_class().to_lower()] += 1 # Increase whatever type is conllected
 	print(collected)
 	area.queue_free() # Destroy the collected item
-	print("Hook (press H): ", upgrades.can_upgrade('hook', collected), "; Ramp (press R): ", upgrades.can_upgrade('ramp', collected))
+	print("Hook (press H): ", Upgrades.can_upgrade('hook', collected), "; Ramp (press R): ", Upgrades.can_upgrade('ramp', collected))
