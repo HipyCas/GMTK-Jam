@@ -19,7 +19,7 @@ export var upgrades = {
 	}
 }
 
-var completed = []
+var completed = ['legs', 'battery']
 
 func can_upgrade(upgrade: String, components: Dictionary):
 	if upgrades.has(upgrade):
