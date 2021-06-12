@@ -19,6 +19,8 @@ export var upgrades = {
 	}
 }
 
+var completed = []
+
 func can_upgrade(upgrade: String, components: Dictionary):
 	if upgrades.has(upgrade):
 		for component in upgrades[upgrade].keys():
@@ -33,6 +35,7 @@ func can_upgrade(upgrade: String, components: Dictionary):
 func upgrade(upgrade: String, components: Dictionary) -> Array:
 	var err_msg = ''
 	if can_upgrade(upgrade, components):
+		completed.append(upgrade)
 		for component in upgrades[upgrade].keys():
 			components[component] -= upgrades[upgrade][component]
 	else: err_msg = 'Cannot upgrade with the passed components'
