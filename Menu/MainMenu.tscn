@@ -1,0 +1,503 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Menu/Title_.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Menu/UIButtonFill.png" type="Texture" id=2]
+[ext_resource path="res://Menu/UIButtonFrame.png" type="Texture" id=3]
+[ext_resource path="res://Menu/ProgressAnimationUI.gd" type="Script" id=4]
+[ext_resource path="res://Menu/Settings_.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Menu/BG2.png" type="Texture" id=7]
+[ext_resource path="res://Menu/BG1.png" type="Texture" id=8]
+[ext_resource path="res://Menu/MenuOptions.gd" type="Script" id=9]
+[ext_resource path="res://Pause/Settings.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Pause/BarController.gd" type="Script" id=11]
+[ext_resource path="res://Pause/Minus.png" type="Texture" id=12]
+[ext_resource path="res://Pause/Bars.png" type="Texture" id=13]
+[ext_resource path="res://Pause/Plus.png" type="Texture" id=14]
+
+[sub_resource type="Animation" id=1]
+resource_name = "BG"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:anchor_right")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:anchor_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -1.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "BG2"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:anchor_right")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:anchor_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -1.0 ]
+}
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource( 9 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG1" type="Control" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control/BG1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="Control/BG1"]
+anchor_left = 1.0
+anchor_right = 2.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/BG1"]
+autoplay = "BG"
+anims/BG = SubResource( 1 )
+
+[node name="BG2" type="Control" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control/BG2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="Control/BG2"]
+anchor_left = 1.0
+anchor_right = 2.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/BG2"]
+autoplay = "BG2"
+playback_speed = 2.0
+anims/BG2 = SubResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 427
+custom_constants/margin_top = 53
+custom_constants/margin_left = 62
+custom_constants/margin_bottom = 149
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+margin_left = 62.0
+margin_top = 53.0
+margin_right = 866.0
+margin_bottom = 451.0
+custom_constants/separation = 35
+
+[node name="Title" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+margin_right = 804.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 1 )
+text = "Robot game"
+
+[node name="MainOptions" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+margin_top = 117.0
+margin_right = 804.0
+margin_bottom = 398.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 200
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/MainOptions"]
+margin_left = 10.0
+margin_right = 604.0
+margin_bottom = 281.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 10
+
+[node name="Start" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer"]
+margin_right = 594.0
+margin_bottom = 87.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureProgress" type="TextureProgress" parent="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Start"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 100.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+nine_patch_stretch = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Start/TextureProgress"]
+playback_speed = 3.0
+playback/speed = 3.0
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Start"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_outline_modulate = Color( 0.129412, 0.14902, 0.247059, 1 )
+text = "Game"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer"]
+margin_top = 97.0
+margin_right = 594.0
+margin_bottom = 184.0
+size_flags_vertical = 3
+
+[node name="TextureProgress" type="TextureProgress" parent="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 100.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+nine_patch_stretch = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Options/TextureProgress"]
+playback_speed = 3.0
+playback/speed = 3.0
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 100.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_outline_modulate = Color( 0.129412, 0.14902, 0.247059, 1 )
+text = "Options"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer"]
+margin_top = 194.0
+margin_right = 594.0
+margin_bottom = 281.0
+size_flags_vertical = 3
+
+[node name="TextureProgress" type="TextureProgress" parent="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Exit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 100.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+nine_patch_stretch = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Exit/TextureProgress"]
+playback_speed = 3.0
+playback/speed = 3.0
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Exit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 100.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_outline_modulate = Color( 0.129412, 0.14902, 0.247059, 1 )
+text = "Exit"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+visible = false
+margin_top = 117.0
+margin_right = 804.0
+margin_bottom = 398.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 50
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/Settings"]
+margin_left = 10.0
+margin_right = 754.0
+margin_bottom = 281.0
+custom_constants/separation = 10
+
+[node name="Titles" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer"]
+margin_right = 207.0
+margin_bottom = 281.0
+custom_constants/separation = 15
+
+[node name="Master" type="Label" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Titles"]
+margin_right = 207.0
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 10 )
+text = "Master"
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Titles"]
+margin_top = 77.0
+margin_right = 207.0
+margin_bottom = 139.0
+custom_fonts/font = ExtResource( 10 )
+text = "Music"
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Titles"]
+margin_top = 154.0
+margin_right = 207.0
+margin_bottom = 216.0
+custom_fonts/font = ExtResource( 10 )
+text = "Sfx"
+
+[node name="Settings" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer"]
+margin_left = 217.0
+margin_right = 744.0
+margin_bottom = 281.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="Master" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings"]
+margin_right = 527.0
+margin_bottom = 62.0
+size_flags_vertical = 3
+custom_constants/separation = 10
+script = ExtResource( 11 )
+
+[node name="Minus" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/Master"]
+margin_right = 169.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 12 )
+expand = true
+
+[node name="Rect" type="TextureProgress" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/Master"]
+margin_left = 179.0
+margin_right = 348.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 100.0
+texture_progress = ExtResource( 13 )
+nine_patch_stretch = true
+
+[node name="Plus" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/Master"]
+margin_left = 358.0
+margin_right = 527.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 14 )
+expand = true
+
+[node name="Music" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings"]
+margin_top = 72.0
+margin_right = 527.0
+margin_bottom = 135.0
+size_flags_vertical = 3
+custom_constants/separation = 10
+script = ExtResource( 11 )
+
+[node name="Minus" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/Music"]
+margin_right = 169.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 12 )
+expand = true
+
+[node name="Rect" type="TextureProgress" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/Music"]
+margin_left = 179.0
+margin_right = 348.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 100.0
+texture_progress = ExtResource( 13 )
+nine_patch_stretch = true
+
+[node name="Plus" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/Music"]
+margin_left = 358.0
+margin_right = 527.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 14 )
+expand = true
+
+[node name="Sfx" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings"]
+margin_top = 145.0
+margin_right = 527.0
+margin_bottom = 208.0
+size_flags_vertical = 3
+custom_constants/separation = 10
+script = ExtResource( 11 )
+
+[node name="Minus" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/Sfx"]
+margin_right = 169.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 12 )
+expand = true
+
+[node name="Rect" type="TextureProgress" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/Sfx"]
+margin_left = 179.0
+margin_right = 348.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 100.0
+texture_progress = ExtResource( 13 )
+nine_patch_stretch = true
+
+[node name="Plus" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/Sfx"]
+margin_left = 358.0
+margin_right = 527.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 14 )
+expand = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings"]
+margin_top = 218.0
+margin_right = 527.0
+margin_bottom = 281.0
+size_flags_vertical = 3
+custom_constants/margin_right = 75
+
+[node name="Back" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/MarginContainer"]
+margin_right = 452.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureProgress" type="TextureProgress" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/MarginContainer/Back"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 100.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+nine_patch_stretch = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/MarginContainer/Back/TextureProgress"]
+playback_speed = 3.0
+playback/speed = 3.0
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/MarginContainer/Back"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_outline_modulate = Color( 0.129412, 0.14902, 0.247059, 1 )
+text = "Back"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="mouse_entered" from="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Start/TextureProgress" to="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Start/TextureProgress" method="_on_TextureProgress_mouse_entered"]
+[connection signal="mouse_exited" from="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Start/TextureProgress" to="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Start/TextureProgress" method="_on_TextureProgress_mouse_exited"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="mouse_entered" from="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Options/TextureProgress" to="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Options/TextureProgress" method="_on_TextureProgress_mouse_entered"]
+[connection signal="mouse_exited" from="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Options/TextureProgress" to="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Options/TextureProgress" method="_on_TextureProgress_mouse_exited"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="mouse_entered" from="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Exit/TextureProgress" to="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Exit/TextureProgress" method="_on_TextureProgress_mouse_entered"]
+[connection signal="mouse_exited" from="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Exit/TextureProgress" to="Control/MarginContainer/VBoxContainer/MainOptions/VBoxContainer/Exit/TextureProgress" method="_on_TextureProgress_mouse_exited"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/MarginContainer/Back" to="." method="_on_Back_pressed"]
+[connection signal="mouse_entered" from="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/MarginContainer/Back/TextureProgress" to="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/MarginContainer/Back/TextureProgress" method="_on_TextureProgress_mouse_entered"]
+[connection signal="mouse_exited" from="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/MarginContainer/Back/TextureProgress" to="Control/MarginContainer/VBoxContainer/Settings/HBoxContainer/Settings/MarginContainer/Back/TextureProgress" method="_on_TextureProgress_mouse_exited"]
