@@ -19,7 +19,8 @@ export var upgrades = {
 	}
 }
 
-var completed = ['legs', 'battery']
+var completed = []
+var collected = {}
 
 func can_upgrade(upgrade: String, components: Dictionary):
 	if upgrades.has(upgrade):
@@ -32,11 +33,16 @@ func can_upgrade(upgrade: String, components: Dictionary):
 				return false
 	return true
 	
-func upgrade(upgrade: String, components: Dictionary) -> Array:
+func upgrade(upgrade: String) -> String:
 	var err_msg = ''
-	if can_upgrade(upgrade, components):
+	if can_upgrade(upgrade, collected):
 		completed.append(upgrade)
 		for component in upgrades[upgrade].keys():
-			components[component] -= upgrades[upgrade][component]
-	else: err_msg = 'Cannot upgrade with the passed components'
-	return [components, err_msg]
+			collected[component] -= upgrades[upgrade][component]
+	else: err_msg = 'Cannot upgrade with the collected components'
+	return err_msg
+	
+func collect(item: String):
+	if not collected.has(item):
+		collected[item] = 0
+	collected[item] += 1 # Increase whatever type is conllected
