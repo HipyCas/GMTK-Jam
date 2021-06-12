@@ -8,7 +8,6 @@ var collected = {}
 
 var velocity = Vector2()
 
-onready var upgrades = get_node("../Upgrades")
 onready var stateMachine = $AnimationTree["parameters/playback"]
 
 # Called when the node enters the scene tree for the first time.
