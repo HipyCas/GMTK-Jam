@@ -1,13 +1,14 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Sprites/engranaje.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Wrench.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Named.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 21.8671
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource( 2 )
+identifier = "Wrench"
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -0.834274, -4.67194 )
