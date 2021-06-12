@@ -5,8 +5,17 @@ export var upgrades = {
 		'wrench': 1,
 		'spring': 2
 	},
-	'ramp': {
+	'propeller': {
 		'wrench': 2
+	},
+	'arms': { # Shoudl be done first
+		
+	},
+	'legs': { # Should be done second
+		
+	},
+	'battery': { # Should be done third/last
+		
 	}
 }
 
