@@ -48,13 +48,13 @@ func _physics_process(delta):
 	
 func _input(event):
 	if Input.is_key_pressed(KEY_H):
-		var res = Upgrades.upgrade('hook', collected)
+		var res = upgrades.upgrade('hook', collected)
 		collected = res[0]
 		if res[1] == '': print('UPGRADED: hook (left ', collected, ')')
-		else: push_warning('Can\'t upgrade, not enough components')
+		else: push_warning('Can\'t upgrade hook, not enough components')
 		print(res[1])
 	elif Input.is_key_pressed(KEY_R):
-		var res = Upgrades.upgrade('ramp', collected)
+		var res = upgrades.upgrade('ramp', collected)
 		collected = res[0]
 		if res[1] == '': print('UPGRADED: ramp (left ', collected, ')')
 		else: push_warning('Can\'t upgrade ramp, not enough components')
@@ -62,12 +62,7 @@ func _input(event):
 
 func _on_Area2D_area_entered(area):
 	$Pickup.play()
-	if area.get_class() == 'Hole':
-		print("Fell into hole!")
-		return
-	if not collected.has(area.get_class().to_lower()):
-		collected[area.get_class().to_lower()] = 0
 	collected[area.get_class().to_lower()] += 1 # Increase whatever type is conllected
 	print(collected)
 	area.queue_free() # Destroy the collected item
-	print("Hook (press H): ", Upgrades.can_upgrade('hook', collected), "; Ramp (press R): ", Upgrades.can_upgrade('ramp', collected))
+	print("Hook (press H): ", upgrades.can_upgrade('hook', collected), "; Ramp (press R): ", upgrades.can_upgrade('ramp', collected))
