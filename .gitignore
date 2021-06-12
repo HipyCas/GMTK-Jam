@@ -391,3 +391,6 @@ gcov.css
 .clangd/
 .cache/
 
+# Mono-specific ignores
+.mono/
+data_*/
