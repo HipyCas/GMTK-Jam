@@ -2,10 +2,7 @@ extends KinematicBody2D
 
 export var speed = 100
 export var flip = false # By default sprite looks to the left
-var collected = {
-	'wrench': 0,
-	'spring': 0
-}
+var collected = {}
 
 onready var upgrades = get_node("../Upgrades")
 
@@ -36,7 +33,7 @@ func _input(event):
 		var res = upgrades.upgrade('hook', collected)
 		collected = res[0]
 		if res[1] == '': print('UPGRADED: hook (left ', collected, ')')
-		else: push_warning('Can\'t upgrade hook, not enough components')
+		else: push_warning('Can\'t upgrade, not enough components')
 		print(res[1])
 	elif Input.is_key_pressed(KEY_R):
 		var res = upgrades.upgrade('ramp', collected)
@@ -46,6 +43,11 @@ func _input(event):
 		print(res[1])
 
 func _on_Area2D_area_entered(area):
+	if area.get_class() == 'Hole':
+		print("Fell into hole!")
+		return
+	if not collected.has(area.get_class().to_lower()):
+		collected[area.get_class().to_lower()] = 0
 	collected[area.get_class().to_lower()] += 1 # Increase whatever type is conllected
 	print(collected)
 	area.queue_free() # Destroy the collected item
