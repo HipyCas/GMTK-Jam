@@ -5,7 +5,7 @@
 [ext_resource path="res://Prefabs/Spring.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Prefabs/Rock1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Prefabs/Rock2.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scripts/Upgrades.gd" type="Script" id=6]
+[ext_resource path="res://Prefabs/Hole.tscn" type="PackedScene" id=7]
 
 [node name="Node2D" type="Node2D"]
 
@@ -132,6 +132,9 @@ position = Vector2( -89.0898, 35.6359 )
 
 [node name="Rock Small 6" parent="Obstacles" instance=ExtResource( 5 )]
 
+[node name="Hole" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( -315.26, 82.9221 )
+
 [node name="Collectables" type="Node2D" parent="."]
 
 [node name="Wrench 1" parent="Collectables" instance=ExtResource( 1 )]
@@ -148,6 +151,3 @@ position = Vector2( -56.2618, -115.66 )
 
 [node name="Spring 3" parent="Collectables" instance=ExtResource( 3 )]
 position = Vector2( 460.654, 284.388 )
-
-[node name="Upgrades" type="Node2D" parent="."]
-script = ExtResource( 6 )
