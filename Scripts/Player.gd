@@ -15,15 +15,15 @@ func _physics_process(delta):
 	var v = Vector2(0, 0) # Empty vector in case no movement
 	
 	if Input.is_action_pressed("ui_right"):
-		v = Vector2(speed, 0)
+		v.x += speed
 		flip = true
 	elif Input.is_action_pressed("ui_left"):
-		v = Vector2(-speed, 0)
+		v.x -= speed
 		flip = false
 	if Input.is_action_pressed("ui_up"):
-		v = Vector2(0, -speed)
+		v.y -= speed
 	elif Input.is_action_pressed("ui_down"):
-		v = Vector2(0, speed)
+		v.y += speed
 	
 	move_and_slide(v)
 	
