@@ -1,13 +1,30 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Prefabs/Wrench.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Prefabs/Spring.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Prefabs/Rock1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Prefabs/Rock2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sprites/textura fondo robot.png" type="Texture" id=6]
 [ext_resource path="res://Prefabs/Hole.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Prefabs/Father.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/CollectedLabel.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/CraftedLabel.gd" type="Script" id=10]
+[ext_resource path="res://Prefabs/Bearing.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Prefabs/Screw.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Prefabs/Nut.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/RichTextLabel.gd" type="Script" id=14]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+z_index = -1
+texture = ExtResource( 6 )
+texture_offset = Vector2( 600, 500 )
+texture_scale = Vector2( 2, 2 )
+invert_border = 527.4
+polygon = PoolVector2Array( -243.873, -68.3998, -165.474, -180.653, -76.3844, -207.38, 66.1594, -210.944, 199.794, -180.653, 340.556, -75.527, 404.701, -39.891, 481.318, -14.9459, 554.372, 15.3447, 655.934, 113.344, 682.661, 223.815, 647.025, 336.068, 508.045, 423.376, 278.193, 432.285, 123.177, 446.54, -14.0215, 375.268, -71.039, 327.159, -163.693, 198.87, -236.746, 83.053, -274.164, 13.5629 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
@@ -23,13 +40,13 @@ position = Vector2( -203.502, -133.606 )
 position = Vector2( -271.717, 26.396 )
 
 [node name="Rock Big 4" parent="Wall" instance=ExtResource( 4 )]
-position = Vector2( 335.444, -86.8942 )
+position = Vector2( 340.206, -302.781 )
 
 [node name="Rock Big 5" parent="Wall" instance=ExtResource( 4 )]
 position = Vector2( -117.973, -206.199 )
 
 [node name="Rock Big 6" parent="Wall" instance=ExtResource( 4 )]
-position = Vector2( 47.848, -219.421 )
+position = Vector2( 47.848, -226.492 )
 
 [node name="Rock Big 11" parent="Wall" instance=ExtResource( 4 )]
 position = Vector2( -200.281, 135.311 )
@@ -59,19 +76,19 @@ position = Vector2( 514.881, 405.078 )
 position = Vector2( 197.262, 431.959 )
 
 [node name="Rock Big 25" parent="Wall" instance=ExtResource( 4 )]
-position = Vector2( 450.075, -33.9594 )
+position = Vector2( 378.642, -337.153 )
 
 [node name="Rock Big 26" parent="Wall" instance=ExtResource( 4 )]
-position = Vector2( 524.212, -9.17398 )
+position = Vector2( 438.492, -352.053 )
 
 [node name="Rock Big 27" parent="Wall" instance=ExtResource( 4 )]
-position = Vector2( 649.096, 151.389 )
+position = Vector2( 704.655, 156.151 )
 
 [node name="Rock Big 28" parent="Wall" instance=ExtResource( 4 )]
 position = Vector2( 676.907, 209.369 )
 
 [node name="Rock Big 29" parent="Wall" instance=ExtResource( 4 )]
-position = Vector2( 590.875, 48.6472 )
+position = Vector2( 827.398, 121.668 )
 
 [node name="Rock Big 30" parent="Wall" instance=ExtResource( 4 )]
 position = Vector2( -184.104, -182.302 )
@@ -83,7 +100,85 @@ position = Vector2( 675.68, 280.713 )
 position = Vector2( 648.516, 328.46 )
 
 [node name="Rock Big 33" parent="Wall" instance=ExtResource( 4 )]
-position = Vector2( 637.365, 84.5089 )
+position = Vector2( 775.469, 140.068 )
+
+[node name="Rock Big 43" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1179.6, 340.344 )
+
+[node name="Rock Big 44" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 993.562, 172.025 )
+
+[node name="Rock Big 45" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1022.96, 214.131 )
+
+[node name="Rock Big 46" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 882.957, 120.08 )
+
+[node name="Rock Big 47" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1070.94, 247.378 )
+
+[node name="Rock Big 48" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1127.91, 285.6 )
+
+[node name="Rock Big 49" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 942.146, 141.655 )
+
+[node name="Rock Big 50" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1608.45, 315.79 )
+
+[node name="Rock Big 51" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1322.15, 367.276 )
+
+[node name="Rock Big 52" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1388.06, 379.221 )
+
+[node name="Rock Big 53" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1458.27, 406.118 )
+
+[node name="Rock Big 54" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1537.26, 379.579 )
+
+[node name="Rock Big 55" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1242.16, 357.542 )
+
+[node name="Rock Big 56" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1675.6, 284.344 )
+
+[node name="Rock Big 57" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1928.45, 145.79 )
+
+[node name="Rock Big 58" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1818.15, 311.276 )
+
+[node name="Rock Big 59" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1880.06, 287.221 )
+
+[node name="Rock Big 60" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1913.26, 229.579 )
+
+[node name="Rock Big 62" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1756.45, 15.7903 )
+
+[node name="Rock Big 63" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1870.15, 87.2756 )
+
+[node name="Rock Big 64" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1812.06, 71.221 )
+
+[node name="Rock Big 65" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1731.26, 69.5794 )
+
+[node name="Rock Big 66" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1854.45, -114.21 )
+
+[node name="Rock Big 67" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1912.06, -196.779 )
+
+[node name="Rock Big 68" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1817.26, -54.4206 )
+
+[node name="Rock Big 61" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1738.16, 301.542 )
 
 [node name="Rock Big 24" parent="Wall" instance=ExtResource( 4 )]
 position = Vector2( 61.1469, 410.418 )
@@ -101,53 +196,248 @@ position = Vector2( -131.333, 263.182 )
 position = Vector2( -77.9853, 321.738 )
 
 [node name="Rock Big 7" parent="Wall" instance=ExtResource( 4 )]
-position = Vector2( 119.655, -209.83 )
+position = Vector2( 128.14, -236.7 )
 
 [node name="Rock Big 8" parent="Wall" instance=ExtResource( 4 )]
 position = Vector2( -38.8138, -222.158 )
 
 [node name="Rock Big 9" parent="Wall" instance=ExtResource( 4 )]
-position = Vector2( 260.881, -129.458 )
+position = Vector2( 268.818, -294.548 )
 
 [node name="Rock Big 10" parent="Wall" instance=ExtResource( 4 )]
-position = Vector2( 198.073, -177.443 )
+position = Vector2( 186.961, -271.1 )
 
-[node name="Rock Small 1" parent="Wall" instance=ExtResource( 5 )]
-position = Vector2( 401.15, -49.4035 )
+[node name="Rock Big 34" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 949.768, -448.822 )
+
+[node name="Rock Big 35" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 491.589, -352.24 )
+
+[node name="Rock Big 36" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 657.41, -365.462 )
+
+[node name="Rock Big 37" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 988.204, -483.194 )
+
+[node name="Rock Big 38" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1048.05, -498.094 )
+
+[node name="Rock Big 39" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 729.217, -355.871 )
+
+[node name="Rock Big 40" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 570.748, -368.199 )
+
+[node name="Rock Big 41" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 878.38, -440.589 )
+
+[node name="Rock Big 42" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 796.523, -417.141 )
+
+[node name="Rock Big 69" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1261.77, -586.822 )
+
+[node name="Rock Big 70" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1358.2, -569.194 )
+
+[node name="Rock Big 71" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1440.05, -566.094 )
+
+[node name="Rock Big 72" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1188.38, -564.589 )
+
+[node name="Rock Big 73" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1108.52, -555.141 )
+
+[node name="Rock Big 74" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1651.77, -468.822 )
+
+[node name="Rock Big 75" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1718.2, -433.194 )
+
+[node name="Rock Big 76" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1790.05, -414.094 )
+
+[node name="Rock Big 79" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1831.77, -368.822 )
+
+[node name="Rock Big 80" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1898.2, -333.194 )
+
+[node name="Rock Big 81" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1922.05, -284.094 )
+
+[node name="Rock Big 77" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1582.38, -504.589 )
+
+[node name="Rock Big 78" parent="Wall" instance=ExtResource( 4 )]
+position = Vector2( 1510.52, -549.141 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 position = Vector2( 447.014, 210.747 )
 
 [node name="Rock Small 2" parent="Obstacles" instance=ExtResource( 5 )]
-position = Vector2( -456.14, -253.015 )
+position = Vector2( -432.832, -259.352 )
 
 [node name="Rock Small 3" parent="Obstacles" instance=ExtResource( 5 )]
 position = Vector2( -409.813, -39.1996 )
 
 [node name="Rock Small 4" parent="Obstacles" instance=ExtResource( 5 )]
-position = Vector2( -185.307, -87.3081 )
+position = Vector2( -199.449, -125.492 )
 
 [node name="Rock Small 5" parent="Obstacles" instance=ExtResource( 5 )]
 position = Vector2( -89.0898, 35.6359 )
 
 [node name="Rock Small 6" parent="Obstacles" instance=ExtResource( 5 )]
 
+[node name="Rock Small 7" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 80.9086, -356.597 )
+
+[node name="Rock Small 8" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 410.128, -289.633 )
+
+[node name="Rock Small 9" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 490.228, -278.822 )
+
+[node name="Rock Small 10" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 571.136, -248.855 )
+
+[node name="Rock Small 13" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 852.128, -419.633 )
+
+[node name="Rock Small 14" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 932.228, -408.822 )
+
+[node name="Rock Small 15" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 1013.14, -378.855 )
+
+[node name="Rock Small 16" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 714.128, -545.633 )
+
+[node name="Rock Small 17" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 764.228, -582.822 )
+
+[node name="Rock Small 18" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 831.136, -610.855 )
+
+[node name="Rock Small 11" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 644.553, -211.398 )
+
+[node name="Rock Small 12" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 384.553, -549.398 )
+
 [node name="Hole" parent="Obstacles" instance=ExtResource( 7 )]
 position = Vector2( -315.26, 82.9221 )
+
+[node name="Hole2" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 5.37769, -278.17 )
+
+[node name="Hole3" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 201.656, -179.282 )
+
+[node name="Hole4" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 777.177, -26.0471 )
+
+[node name="Hole5" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 545.177, -380.047 )
+
+[node name="Hole6" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 1201.66, -409.282 )
+
+[node name="Hole7" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 1081.18, -250.047 )
+
+[node name="Hole8" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 1111.18, -340.047 )
+
+[node name="Hole9" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 761.177, -686.047 )
 
 [node name="Collectables" type="Node2D" parent="."]
 
 [node name="Wrench 1" parent="Collectables" instance=ExtResource( 1 )]
-position = Vector2( 168.38, 147.889 )
+position = Vector2( 923.043, -1.15903 )
 
 [node name="Wrench 2" parent="Collectables" instance=ExtResource( 1 )]
-position = Vector2( 309.142, 65.0356 )
+position = Vector2( 1440.69, -304.669 )
 
 [node name="Spring 1" parent="Collectables" instance=ExtResource( 3 )]
-position = Vector2( 163.989, -58.7241 )
+position = Vector2( 552.312, -10.0067 )
 
 [node name="Spring 2" parent="Collectables" instance=ExtResource( 3 )]
-position = Vector2( -56.2618, -115.66 )
+position = Vector2( 519.444, -267.236 )
 
 [node name="Spring 3" parent="Collectables" instance=ExtResource( 3 )]
-position = Vector2( 460.654, 284.388 )
+position = Vector2( 1771.11, 185.629 )
+
+[node name="Screw 1" parent="Collectables" instance=ExtResource( 12 )]
+position = Vector2( 440.042, 306.782 )
+
+[node name="Screw 2" parent="Collectables" instance=ExtResource( 12 )]
+position = Vector2( 892.517, -248.857 )
+
+[node name="Bearing 1" parent="Collectables" instance=ExtResource( 11 )]
+position = Vector2( 1661.47, -79.3365 )
+
+[node name="Bearing 2" parent="Collectables" instance=ExtResource( 11 )]
+position = Vector2( 329.879, 149.704 )
+
+[node name="Nut 1" parent="Collectables" instance=ExtResource( 13 )]
+position = Vector2( 244.659, -48.0833 )
+
+[node name="Nut 2" parent="Collectables" instance=ExtResource( 13 )]
+position = Vector2( -36.7696, -118.794 )
+
+[node name="Nut 3" parent="Collectables" instance=ExtResource( 13 )]
+position = Vector2( 1123.23, -406.794 )
+
+[node name="Father" parent="." instance=ExtResource( 8 )]
+position = Vector2( -108.065, 25.4271 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="InstructionsLabel" type="RichTextLabel" parent="CanvasLayer"]
+margin_left = 4.65765
+margin_top = 568.78
+margin_right = 400.658
+margin_bottom = 600.78
+text = "H, J, K - Craft arms, legs and battery for father respectively
+Y, U, I - To install them near to hime, respectively, in order"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollectedLabel" type="RichTextLabel" parent="CanvasLayer"]
+margin_left = 3.27032
+margin_top = 2.97301
+margin_right = 165.27
+margin_bottom = 146.973
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CraftedLabel" type="RichTextLabel" parent="CanvasLayer"]
+margin_left = 954.0
+margin_top = 4.0
+margin_right = 1020.0
+margin_bottom = 99.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -365.383
+margin_top = 139.003
+margin_right = -124.383
+margin_bottom = 179.003
+tab_size = 0
+text = "Congrats! You won!"
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

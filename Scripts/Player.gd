@@ -46,26 +46,41 @@ func _physics_process(delta):
 	$Sprite.flip_h = flip # Flip robot to look in direction of movement
 	
 func _input(event):
-	if Input.is_key_pressed(KEY_H):
+	print(Upgrades.collected, " | ", Upgrades.crafted)
+	if Input.is_key_pressed(KEY_H) && not('arms' in Upgrades.crafted):
 		var err = Upgrades.craft('arms')
-		if err == '': print('UPGRADED: hook (left ', Upgrades.collected, ')')
+		if err == '': print('UPGRADED: arms (left ', Upgrades.collected, ')')
 		else: push_warning("Can't upgrade, not enough components")
 		print(err)
-	if is_on_father && Input.is_key_pressed(KEY_E):
-		print('Installing stuff on father, yay!')
+	elif Input.is_key_pressed(KEY_J) && not('legs' in Upgrades.crafted):
+		var err = Upgrades.craft('legs')
+		if err == '': print('UPGRADED: lesg (left ', Upgrades.collected, ')')
+		else: push_warning("Can't upgrade, not enough components")
+		print(err)
+	elif Input.is_key_pressed(KEY_K) && not('battery' in Upgrades.crafted):
+		var err = Upgrades.craft('battery')
+		if err == '': print('UPGRADED: battery (left ', Upgrades.collected, ')')
+		else: push_warning("Can't upgrade, not enough components")
+		print(err)
+	
+	if is_on_father:
+		if Input.is_key_pressed(KEY_Y):
+			print(Upgrades.install('arms'))
+		elif Input.is_key_pressed(KEY_U):
+			print(Upgrades.install('legs'))
+		elif Input.is_key_pressed(KEY_I):
+			print(Upgrades.install('battery'))
 
 func _on_Area2D_area_entered(area):
 	$Pickup.play()
 	if area.get_class() == 'Hole':
-		print("Fell into hole!")
+		queue_free()
 		return
 	if area.get_class() == 'Father':
 		is_on_father = true
 		return
 	Upgrades.collect(area.get_class().to_lower())
-	print(Upgrades.collected)
 	area.queue_free() # Destroy the collected item
-	print("Hook (press H): ", Upgrades.can_upgrade('hook', Upgrades.collected), "; Ramp (press R): ", Upgrades.can_upgrade('ramp', Upgrades.collected))
 
 
 func _on_Area2D_area_exited(area):
