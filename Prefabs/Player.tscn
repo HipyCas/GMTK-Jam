@@ -6,15 +6,14 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 37.4056, 34.0268 )
 
-[sub_resource type="Gradient" id=17]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.0134228, 0.765101, 1 )
 colors = PoolColorArray( 0.622559, 0.622559, 0.622559, 1, 0.765101, 0.765101, 0.765101, 1, 1, 1, 1, 0 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 39.1151, 35.932 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "Idle"
+[sub_resource type="Animation" id=4]
 length = 2.0
 loop = true
 tracks/0/type = "bezier"
@@ -38,8 +37,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 2 )
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Move"
+[sub_resource type="Animation" id=5]
 length = 0.6
 loop = true
 tracks/0/type = "bezier"
@@ -63,8 +61,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3, 0.6 )
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Recover"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Sprite:scale:x")
 tracks/0/interp = 1
@@ -86,8 +83,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "StartMoving"
+[sub_resource type="Animation" id=7]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Sprite:scale:x")
 tracks/0/interp = 1
@@ -109,42 +105,42 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Move"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Recover"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "StartMoving"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=11]
-switch_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=12]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=13]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=14]
+switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id=15]
-states/Idle/node = SubResource( 7 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachine" id=16]
+states/Idle/node = SubResource( 8 )
 states/Idle/position = Vector2( 561, 77 )
-states/Move/node = SubResource( 8 )
+states/Move/node = SubResource( 9 )
 states/Move/position = Vector2( 753, 164 )
-states/Recover/node = SubResource( 9 )
+states/Recover/node = SubResource( 10 )
 states/Recover/position = Vector2( 568, 164 )
-states/StartMoving/node = SubResource( 10 )
+states/StartMoving/node = SubResource( 11 )
 states/StartMoving/position = Vector2( 769, 77 )
-transitions = [ "Idle", "StartMoving", SubResource( 11 ), "StartMoving", "Move", SubResource( 12 ), "Move", "Recover", SubResource( 13 ), "Recover", "Idle", SubResource( 14 ) ]
+transitions = [ "Idle", "StartMoving", SubResource( 12 ), "StartMoving", "Move", SubResource( 13 ), "Move", "Recover", SubResource( 14 ), "Recover", "Idle", SubResource( 15 ) ]
 start_node = "Idle"
 graph_offset = Vector2( 87, 17 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 position = Vector2( 35.1349, 24.432 )
@@ -166,10 +162,10 @@ direction = Vector2( 1, -2 )
 gravity = Vector2( 0, 50 )
 initial_velocity = 50.0
 scale_amount = 8.0
-color_ramp = SubResource( 17 )
+color_ramp = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.0480092, 0.0519908 )
+scale = Vector2( 0.0495536, 0.0504464 )
 texture = ExtResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -181,20 +177,20 @@ smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 4.75, 11.75 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Idle = SubResource( 3 )
-anims/Move = SubResource( 4 )
-anims/Recover = SubResource( 5 )
-anims/StartMoving = SubResource( 6 )
+anims/Idle = SubResource( 4 )
+anims/Move = SubResource( 5 )
+anims/Recover = SubResource( 6 )
+anims/StartMoving = SubResource( 7 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 15 )
+tree_root = SubResource( 16 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 16 )
+parameters/playback = SubResource( 17 )
 
 [node name="Moving" type="AudioStreamPlayer" parent="."]
 volume_db = -20.0
@@ -202,5 +198,5 @@ bus = "Sfx"
 
 [node name="Pickup" type="AudioStreamPlayer" parent="."]
 bus = "Sfx"
-
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]

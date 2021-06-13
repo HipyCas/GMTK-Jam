@@ -1,13 +1,6 @@
 extends Node2D
 
 export var upgrades = {
-	'hook': {
-		'wrench': 1,
-		'spring': 2
-	},
-	'propeller': {
-		'wrench': 2
-	},
 	'arms': { # Shoudl be done first
 		
 	},
@@ -33,8 +26,14 @@ func can_upgrade(upgrade: String, components: Dictionary):
 				return false
 	return true
 	
-func upgrade(upgrade: String) -> String:
+func craft(upgrade: String) -> String:
+	"""
+	Craft a new item
+	"""
 	var err_msg = ''
+	if not upgrades.has(upgrade):
+		err_msg = 'The passed upgrade does not exist'
+		return err_msg
 	if can_upgrade(upgrade, collected):
 		completed.append(upgrade)
 		for component in upgrades[upgrade].keys():

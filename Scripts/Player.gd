@@ -8,6 +8,8 @@ var velocity = Vector2()
 
 onready var stateMachine = $AnimationTree["parameters/playback"]
 
+var is_on_father = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationTree.active = true
@@ -45,17 +47,28 @@ func _physics_process(delta):
 	
 func _input(event):
 	if Input.is_key_pressed(KEY_H):
-		var err = Upgrades.upgrade('hook')
+		var err = Upgrades.craft('arms')
 		if err == '': print('UPGRADED: hook (left ', Upgrades.collected, ')')
-		else: push_warning('Can\'t upgrade, not enough components')
+		else: push_warning("Can't upgrade, not enough components")
 		print(err)
+	if is_on_father && Input.is_key_pressed(KEY_E):
+		print('Installing stuff on father, yay!')
 
 func _on_Area2D_area_entered(area):
 	$Pickup.play()
 	if area.get_class() == 'Hole':
 		print("Fell into hole!")
 		return
+	if area.get_class() == 'Father':
+		is_on_father = true
+		return
 	Upgrades.collect(area.get_class().to_lower())
 	print(Upgrades.collected)
 	area.queue_free() # Destroy the collected item
 	print("Hook (press H): ", Upgrades.can_upgrade('hook', Upgrades.collected), "; Ramp (press R): ", Upgrades.can_upgrade('ramp', Upgrades.collected))
+
+
+func _on_Area2D_area_exited(area):
+	if area.get_class() == 'Father':
+		is_on_father = false
+		return
